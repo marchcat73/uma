@@ -18,6 +18,7 @@
   border-radius: 4px;
   border: 1px solid #0000001f;
   background: #1976d20a;
+  justify-content: space-between;
 }
 
 .leftButtonBox {
@@ -32,4 +33,10 @@
   justify-content: flex-end;
   align-items: center;
   padding-right: 1rem;
+}
+
+.rightButtonText {
+  font-size: 15px;
+  line-height: 26px;
+  letter-spacing: 0.46px;
 }

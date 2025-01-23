@@ -1,6 +1,7 @@
 import cn from 'classnames';
-import { Button, IconButton } from '@mui/material';
+import { Button, IconButton, Typography } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import SendIcon from '@mui/icons-material/Send';
 import { HeaderProps } from './Header.props';
 import styles from './Header.module.css';
 
@@ -14,7 +15,10 @@ const Header = ({ className, ...props }: HeaderProps) => {
       </div>
       <div className={styles.rightButtonBox}>
         <Button color="primary" size="large" className={styles.rightButton}>
-          Отправить
+          <Typography component="span" className={styles.rightButtonText}>
+            Отправить
+          </Typography>{' '}
+          <SendIcon />
         </Button>
       </div>
     </div>
