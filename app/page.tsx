@@ -1,3 +1,9 @@
+import { BaseLayout } from '@/layouts';
+
 export default async function Home() {
-  return <div>Home</div>;
+  return (
+    <BaseLayout>
+      <div>Home</div>
+    </BaseLayout>
+  );
 }
