@@ -2,3 +2,15 @@
   width: 100%;
   margin-top: 21px;
 }
+
+.buttonsBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.button {
+  width: 159px;
+  height: 42px;
+}
