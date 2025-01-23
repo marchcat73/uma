@@ -1,0 +1,52 @@
+@import './variables.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+html:not(.android-device) {
+  * {
+    text-rendering: geometricPrecision;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  max-width: 360px;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  font-family: var(--font-default);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 150%;
+  color: var(--color-default);
+  background-color: var(--color-bg);
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+}
+
+.link {
+  color: var(--color-link);
+}

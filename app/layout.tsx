@@ -1,13 +1,10 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { ApolloClientProvider } from "@/components/ApolloClientProvider";
-
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from 'next';
+import './globals.css';
+import { ApolloClientProvider } from '@/components/ApolloClientProvider';
 
 export const metadata: Metadata = {
-  title: "Next.js with Apollo",
-  description: "Next.js example with Apollo GraphQL",
+  title: 'UMA App',
+  description: 'UMA App example with Apollo GraphQL',
 };
 
 export default function RootLayout({
@@ -16,8 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body suppressHydrationWarning={true} className={inter.className}>
+    <html lang="ru">
+      <body suppressHydrationWarning={true}>
         <ApolloClientProvider>{children}</ApolloClientProvider>
       </body>
     </html>

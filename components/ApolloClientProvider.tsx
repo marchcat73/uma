@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { HttpLink } from "@apollo/client";
+import { HttpLink } from '@apollo/client';
 import {
   ApolloNextAppProvider,
-  NextSSRInMemoryCache,
-  NextSSRApolloClient,
-} from "@apollo/experimental-nextjs-app-support/ssr";
+  ApolloClient,
+} from '@apollo/experimental-nextjs-app-support';
+import { cache } from '@/cache';
 
 function makeClient() {
   const httpLink = new HttpLink({
     // See more information about this GraphQL endpoint at https://studio.apollographql.com/public/spacex-l4uc6p/variant/main/home
-    uri: "https://main--spacex-l4uc6p.apollographos.net/graphql",
+    uri: 'https://main--spacex-l4uc6p.apollographos.net/graphql',
     // you can configure the Next.js fetch cache here if you want to
-    fetchOptions: { cache: "force-cache" },
+    fetchOptions: { cache: 'force-cache' },
     // alternatively you can override the default `fetchOptions` on a per query basis
     // via the `context` property on the options passed as a second argument
     // to an Apollo Client data fetching hook, e.g.:
@@ -30,8 +30,8 @@ function makeClient() {
     // ```
   });
 
-  return new NextSSRApolloClient({
-    cache: new NextSSRInMemoryCache(),
+  return new ApolloClient({
+    cache: cache,
     link: httpLink,
   });
 }
