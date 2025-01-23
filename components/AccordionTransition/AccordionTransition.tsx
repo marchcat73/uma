@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Fade from '@mui/material/Fade';
 
-export default function AccordionTransition({ body }: any) {
+export default function AccordionTransition({ text, body }: any) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpansion = () => {
@@ -50,7 +50,7 @@ export default function AccordionTransition({ body }: any) {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <Typography component="span">Итого: 12 560р.</Typography>
+          <Typography component="span">{text}</Typography>
         </AccordionSummary>
         <AccordionDetails>{body}</AccordionDetails>
       </Accordion>

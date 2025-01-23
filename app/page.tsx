@@ -20,10 +20,25 @@ const priceData = {
   ],
 };
 
+const panels: any[] = [
+  {
+    width: '200',
+    height: '300',
+    children: true,
+    amount: 2,
+  },
+  {
+    width: '200',
+    height: '300',
+    children: false,
+    amount: 1,
+  },
+];
+
 export default async function HomePage() {
   return (
     <BaseLayout>
-      <Home priceData={priceData} />
+      <Home priceData={priceData} panels={panels} />
     </BaseLayout>
   );
 }
