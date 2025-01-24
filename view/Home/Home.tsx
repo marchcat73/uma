@@ -1,13 +1,17 @@
 'use client';
+import { useReactiveVar } from '@apollo/client';
 import { Divider } from '@mui/material';
 import {
   AccordionTransition,
   AccordionPrice,
   AccordionPanels,
 } from '@/components';
+import { itemsVar } from '@/cache';
 import styles from './Home.module.css';
 
-const Home = ({ priceData, panels }: any) => {
+const Home = ({ priceData }: any) => {
+  const panels = useReactiveVar(itemsVar);
+
   function groupPanels(panels: any) {
     const result: any = {};
     panels.forEach((panel: any) => {
