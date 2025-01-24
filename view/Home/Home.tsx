@@ -1,9 +1,11 @@
 'use client';
+import { Divider } from '@mui/material';
 import {
   AccordionTransition,
   AccordionPrice,
   AccordionPanels,
 } from '@/components';
+import styles from './Home.module.css';
 
 const Home = ({ priceData, panels }: any) => {
   function groupPanels(panels: any) {
@@ -21,36 +23,25 @@ const Home = ({ priceData, panels }: any) => {
   const resGroupPanels = groupPanels(panels);
 
   return (
-    <div>
+    <div className={styles.home}>
       <AccordionTransition
         text="Итого: 12 560р."
         body={<AccordionPrice priceData={priceData} />}
       />
+      <Divider />
       {resGroupPanels &&
         resGroupPanels.map((item: any, index: number) => {
-          // if (p.children) {
-          //   const text = `${p.width}x${p.height} - ${p.amount} шт.`;
-          //   return (
-          //     <AccordionTransition
-          //       key={`${index}`}
-          //       text={text}
-          //       body={<AccordionPanels />}
-          //     />
-          //   );
-          // } else {
-          //   return <div key={`${index}`}>panel</div>;
-          // }
           const text = `${item[0].width}x${item[0].height} - ${item.length} шт.`;
           if (item.length > 1) {
             return (
               <AccordionTransition
                 key={`${index}`}
                 text={text}
-                body={<AccordionPanels />}
+                body={<AccordionPanels items={item} />}
               />
             );
           } else {
-            return <div key={`${index}`}>{text}</div>;
+            return <AccordionPanels items={item} key={`${index}`} />;
           }
         })}
     </div>

@@ -22,20 +22,44 @@ const priceData = {
 
 const panels: any[] = [
   {
+    id: 1,
     width: 200,
     height: 300,
     isPerforation: false,
     isBox: false,
   },
   {
+    id: 2,
     width: 200,
     height: 300,
     isPerforation: true,
     isBox: true,
   },
   {
+    id: 3,
     width: 500,
     height: 300,
+    isPerforation: false,
+    isBox: false,
+  },
+  {
+    id: 4,
+    width: 600,
+    height: 300,
+    isPerforation: false,
+    isBox: false,
+  },
+  {
+    id: 5,
+    width: 700,
+    height: 300,
+    isPerforation: false,
+    isBox: false,
+  },
+  {
+    id: 6,
+    width: 400,
+    height: 200,
     isPerforation: false,
     isBox: false,
   },
