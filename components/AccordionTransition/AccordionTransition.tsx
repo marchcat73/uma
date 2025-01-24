@@ -52,10 +52,12 @@ export default function AccordionTransition({ text, body }: any) {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
           id="panel1-header"
-          // className={styles.text}
+          className={styles.text}
           style={{ minHeight: '40px', maxHeight: '40px' }}
         >
-          <Typography component="span">{text}</Typography>
+          <Typography component="span" variant="subtitle1">
+            {text}
+          </Typography>
         </AccordionSummary>
         <AccordionDetails style={{ boxShadow: 'none' }}>
           {body}
