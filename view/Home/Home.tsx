@@ -41,7 +41,7 @@ const Home = ({ priceData, panels }: any) => {
               />
             );
           } else {
-            return <AccordionPanels items={item} />;
+            return <AccordionPanels items={item} key={`${index}`} />;
           }
         })}
     </div>

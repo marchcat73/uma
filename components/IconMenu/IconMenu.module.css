@@ -1,0 +1,15 @@
+.iconMenu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.head {
+  height: 36px;
+  background-color: #1976d214;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
