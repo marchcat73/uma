@@ -1,19 +1,33 @@
 'use client';
-import React, { useState } from 'react';
-import { IconButton, Typography, Menu } from '@mui/material';
+import React from 'react';
+import { useReactiveVar } from '@apollo/client';
+import { IconButton, Typography } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { itemsVar } from '@/cache';
 import { IconMenu } from '@/components';
 import styles from './AccordionPanels.module.css';
 
 const AccordionPanels = ({ items }: any) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const panels = useReactiveVar(itemsVar);
+
+  const handleClick = (id: any) => {
+    const cleared = panels.map((el: any) => {
+      el.openMenu = false;
+
+      return { ...el };
+    });
+    itemsVar([...cleared]);
+
+    const updatePanels = panels.map((el: any) => {
+      if (el.id === id) {
+        el.openMenu = true;
+      }
+
+      return { ...el };
+    });
+    itemsVar([...updatePanels]);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+
   return (
     <>
       {items.map((item: any) => (
@@ -23,22 +37,15 @@ const AccordionPanels = ({ items }: any) => {
           </Typography>
           <IconButton
             aria-label="more"
-            aria-controls={open ? 'long-menu' : undefined}
-            aria-expanded={open ? 'true' : undefined}
             aria-haspopup="true"
-            onClick={handleClick}
+            onClick={() => {
+              handleClick(item.id);
+            }}
           >
             <MoreVertIcon />
           </IconButton>
-          <Menu
-            anchorEl={anchorEl}
-            open={open}
-            className={styles.menu}
-            sx={{ width: 220, maxWidth: '100%' }}
-            style={{ paddingTop: '0px' }}
-          >
-            <IconMenu anchorEl={anchorEl} id={item.id} onClose={handleClose} />
-          </Menu>
+
+          {item.openMenu && <IconMenu id={item.id} />}
         </div>
       ))}
     </>

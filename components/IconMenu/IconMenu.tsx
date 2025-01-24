@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { useReactiveVar } from '@apollo/client';
 import {
   Divider,
   MenuList,
@@ -11,22 +12,30 @@ import {
 import PhotoSizeSelectSmallIcon from '@mui/icons-material/PhotoSizeSelectSmall';
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { itemsVar } from '@/cache';
 import styles from './IconMenu.module.css';
 
-const IconMenu = ({ id, onClose }: any) => {
+const IconMenu = ({ id }: any) => {
+  const panels = useReactiveVar(itemsVar);
+
+  const handleClose = () => {
+    const updatePanels = panels.map((el: any) => {
+      el.openMenu = false;
+
+      return { ...el };
+    });
+    itemsVar([...updatePanels]);
+  };
   const updateSize = () => {
-    console.log(id);
-    onClose();
+    handleClose();
   };
 
   const updatePerforation = () => {
-    console.log(id);
-    onClose();
+    handleClose();
   };
 
   const deletePanel = () => {
-    console.log(id);
-    onClose();
+    handleClose();
   };
   return (
     <Paper

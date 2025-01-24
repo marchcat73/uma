@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-right: 1rem;
+}
+
+.fab {
+  display: flex;
+  justify-content: space-between;
+  width: 147px;
+}

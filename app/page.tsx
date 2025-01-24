@@ -1,3 +1,5 @@
+'use client';
+import { itemsVar } from '@/cache';
 import { BaseLayout } from '@/layouts';
 import { Home } from '@/view';
 
@@ -27,6 +29,7 @@ const panels: any[] = [
     height: 300,
     isPerforation: false,
     isBox: false,
+    openMenu: false,
   },
   {
     id: 2,
@@ -34,6 +37,7 @@ const panels: any[] = [
     height: 300,
     isPerforation: true,
     isBox: true,
+    openMenu: false,
   },
   {
     id: 3,
@@ -41,6 +45,7 @@ const panels: any[] = [
     height: 300,
     isPerforation: false,
     isBox: false,
+    openMenu: false,
   },
   {
     id: 4,
@@ -48,6 +53,7 @@ const panels: any[] = [
     height: 300,
     isPerforation: false,
     isBox: false,
+    openMenu: false,
   },
   {
     id: 5,
@@ -55,6 +61,7 @@ const panels: any[] = [
     height: 300,
     isPerforation: false,
     isBox: false,
+    openMenu: false,
   },
   {
     id: 6,
@@ -62,13 +69,15 @@ const panels: any[] = [
     height: 200,
     isPerforation: false,
     isBox: false,
+    openMenu: false,
   },
 ];
 
-export default async function HomePage() {
+export default function HomePage() {
+  itemsVar(panels);
   return (
     <BaseLayout>
-      <Home priceData={priceData} panels={panels} />
+      <Home priceData={priceData} />
     </BaseLayout>
   );
 }
