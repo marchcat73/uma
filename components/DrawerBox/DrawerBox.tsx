@@ -2,16 +2,22 @@
 import React, { use, useState } from 'react';
 import { Alert, Button, TextField } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
-
+import { VirtualKeyboard } from '@/components';
 import styles from './DrawerBox.module.css';
 
 const DrawerBox = ({ onClose }: any) => {
-  const [width, setWidth] = useState(540);
-  const [height, setHeight] = useState(940);
+  const [width, setWidth] = useState('540');
+  const [height, setHeight] = useState('940');
   const [isPerf, setIsPerf] = useState(false);
   const [isCase, setIsCase] = useState<boolean | null>(true);
   const [isBottom, setIsBottom] = useState<boolean | null>(false);
   const [openKeypad, setOpenKeypad] = useState(false);
+  const [size, setSize] = useState('width');
+
+  const startVirtualKeyboard = (arg: any) => {
+    setSize(arg);
+    setOpenKeypad(true);
+  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -39,11 +45,12 @@ const DrawerBox = ({ onClose }: any) => {
             aria-label="width"
             value={width}
             className={styles.inputText}
-            onChange={(v) => {
-              setWidth(Number(v.target.value));
-            }}
+            // onChange={(v) => {
+            //   setWidth(Number(v.target.value));
+            // }}
             size="small"
-            type="number"
+            // type="number"
+            onFocus={() => startVirtualKeyboard('width')}
           />
           <TextField
             id="outlined-height"
@@ -51,11 +58,12 @@ const DrawerBox = ({ onClose }: any) => {
             aria-label="height"
             value={height}
             className={styles.inputText}
-            onChange={(v) => {
-              setHeight(Number(v.target.value));
-            }}
+            // onChange={(v) => {
+            //   setHeight(Number(v.target.value));
+            // }}
             size="small"
-            type="number"
+            // type="number"
+            onFocus={() => startVirtualKeyboard('height')}
           />
         </div>
         <div className={styles.perfBox}>
@@ -130,6 +138,15 @@ const DrawerBox = ({ onClose }: any) => {
           </Button>
         </div>
       </form>
+      {openKeypad && (
+        <div className={styles.virt}>
+          {size === 'width' ? (
+            <VirtualKeyboard inputValue={width} setInputValue={setWidth} />
+          ) : (
+            <VirtualKeyboard inputValue={height} setInputValue={setHeight} />
+          )}
+        </div>
+      )}
     </div>
   );
 };
