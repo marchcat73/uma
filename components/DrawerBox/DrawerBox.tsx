@@ -1,16 +1,17 @@
 'use client';
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { Alert, Button, TextField } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 
 import styles from './DrawerBox.module.css';
 
 const DrawerBox = ({ onClose }: any) => {
-  const [width, setWidth] = useState('540 мм.');
-  const [height, setHeight] = useState('940 мм.');
+  const [width, setWidth] = useState(540);
+  const [height, setHeight] = useState(940);
   const [isPerf, setIsPerf] = useState(false);
   const [isCase, setIsCase] = useState<boolean | null>(true);
   const [isBottom, setIsBottom] = useState<boolean | null>(false);
+  const [openKeypad, setOpenKeypad] = useState(false);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -35,23 +36,32 @@ const DrawerBox = ({ onClose }: any) => {
           <TextField
             id="outlined-width"
             label="Ширина в мм."
+            aria-label="width"
             value={width}
             className={styles.inputText}
-            onChange={() => {}}
+            onChange={(v) => {
+              setWidth(Number(v.target.value));
+            }}
             size="small"
+            type="number"
           />
           <TextField
             id="outlined-height"
             label="Высота в мм."
+            aria-label="height"
             value={height}
             className={styles.inputText}
-            onChange={() => {}}
+            onChange={(v) => {
+              setHeight(Number(v.target.value));
+            }}
             size="small"
+            type="number"
           />
         </div>
         <div className={styles.perfBox}>
           <Button
             variant={isPerf ? 'outlined' : 'contained'}
+            aria-label="noPerf"
             onClick={() => {
               setIsPerf(false);
               setIsCase(null);
@@ -63,6 +73,7 @@ const DrawerBox = ({ onClose }: any) => {
           </Button>
           <Button
             variant={isPerf ? 'contained' : 'outlined'}
+            aria-label="isPerf"
             onClick={() => {
               setIsPerf(true);
               setIsCase(true);
@@ -78,6 +89,7 @@ const DrawerBox = ({ onClose }: any) => {
             <div className={styles.containerBox}>
               <Button
                 variant={isCase ? 'contained' : 'outlined'}
+                aria-label="isCase"
                 onClick={() => setIsCase(true)}
                 className={styles.inputText}
               >
@@ -85,6 +97,7 @@ const DrawerBox = ({ onClose }: any) => {
               </Button>
               <Button
                 variant={isCase ? 'outlined' : 'contained'}
+                aria-label="noCase"
                 onClick={() => setIsCase(false)}
                 className={styles.inputText}
               >
@@ -94,6 +107,7 @@ const DrawerBox = ({ onClose }: any) => {
             <div className={styles.containerBox}>
               <Button
                 variant={isBottom ? 'contained' : 'outlined'}
+                aria-label="isBottom"
                 onClick={() => setIsBottom(true)}
                 className={styles.inputText}
               >
@@ -101,6 +115,7 @@ const DrawerBox = ({ onClose }: any) => {
               </Button>
               <Button
                 variant={isBottom ? 'outlined' : 'contained'}
+                aria-label="noBottom"
                 onClick={() => setIsBottom(false)}
                 className={styles.inputText}
               >
