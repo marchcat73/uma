@@ -6,3 +6,4 @@ export * from './DrawerBox';
 export * from './Footer';
 export * from './Header';
 export * from './IconMenu';
+export * from './VirtualKeyboard';

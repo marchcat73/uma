@@ -1,4 +1,5 @@
 .drawerBox {
+  position: relative;
   display: flex;
   flex-flow: column nowrap;
   padding: 10px;
@@ -31,4 +32,12 @@
 .submit {
   width: 100%;
   height: 40px;
+}
+
+.virt {
+  position: fixed;
+  top: 200px;
+  left: 20px;
+  background: #fff;
+  z-index: 1000;
 }
