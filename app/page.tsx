@@ -39,6 +39,24 @@ const panels: any[] = [
     isPerforation: false,
     isBox: false,
   },
+  {
+    width: 600,
+    height: 300,
+    isPerforation: false,
+    isBox: false,
+  },
+  {
+    width: 700,
+    height: 300,
+    isPerforation: false,
+    isBox: false,
+  },
+  {
+    width: 400,
+    height: 200,
+    isPerforation: false,
+    isBox: false,
+  },
 ];
 
 export default async function HomePage() {

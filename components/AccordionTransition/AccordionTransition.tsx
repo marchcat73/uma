@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import Accordion, {
   AccordionSlots,
@@ -10,6 +11,7 @@ import AccordionDetails, {
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Fade from '@mui/material/Fade';
+import styles from './AccordionTransition.module.css';
 
 export default function AccordionTransition({ text, body }: any) {
   const [expanded, setExpanded] = React.useState(false);
@@ -25,6 +27,7 @@ export default function AccordionTransition({ text, body }: any) {
         onChange={handleExpansion}
         slots={{ transition: Fade as AccordionSlots['transition'] }}
         slotProps={{ transition: { timeout: 400 } }}
+        style={{ boxShadow: 'none' }}
         sx={[
           expanded
             ? {
@@ -49,10 +52,14 @@ export default function AccordionTransition({ text, body }: any) {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
           id="panel1-header"
+          // className={styles.text}
+          style={{ minHeight: '40px', maxHeight: '40px' }}
         >
           <Typography component="span">{text}</Typography>
         </AccordionSummary>
-        <AccordionDetails>{body}</AccordionDetails>
+        <AccordionDetails style={{ boxShadow: 'none' }}>
+          {body}
+        </AccordionDetails>
       </Accordion>
     </div>
   );
