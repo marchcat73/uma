@@ -1,0 +1,27 @@
+.drawerBox {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 10px;
+}
+
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.inputBox,
+.perfBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputText {
+  width: 165px;
+  height: 40px;
+}
+
+.perfBox {
+  padding-top: 20px;
+}

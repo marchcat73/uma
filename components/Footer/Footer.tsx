@@ -1,8 +1,9 @@
 'use client';
 import React, { useState } from 'react';
 import cn from 'classnames';
-import { Fab, Drawer } from '@mui/material';
+import { Fab, Drawer, Paper } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import { DrawerBox } from '@/components';
 import { FooterProps } from './Footer.props';
 import styles from './Footer.module.css';
 
@@ -21,7 +22,9 @@ const Footer = ({ className, ...props }: FooterProps) => {
         Добавить
       </Fab>
       <Drawer anchor="bottom" open={open} onClose={() => setOpen(false)}>
-        <p>drawer</p>
+        <Paper elevation={3}>
+          <DrawerBox />
+        </Paper>
       </Drawer>
     </footer>
   );
