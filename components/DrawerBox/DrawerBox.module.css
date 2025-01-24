@@ -8,11 +8,12 @@
   display: flex;
   flex-flow: column nowrap;
   padding-top: 20px;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 }
 
 .inputBox,
-.perfBox {
+.perfBox,
+.containerBox {
   display: flex;
   justify-content: space-between;
 }
@@ -22,6 +23,12 @@
   height: 40px;
 }
 
-.perfBox {
+.perfBox,
+.containerBox {
   padding-top: 20px;
+}
+
+.submit {
+  width: 100%;
+  height: 40px;
 }

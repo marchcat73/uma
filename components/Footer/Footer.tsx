@@ -23,7 +23,7 @@ const Footer = ({ className, ...props }: FooterProps) => {
       </Fab>
       <Drawer anchor="bottom" open={open} onClose={() => setOpen(false)}>
         <Paper elevation={3}>
-          <DrawerBox />
+          <DrawerBox onClose={setOpen} />
         </Paper>
       </Drawer>
     </footer>
