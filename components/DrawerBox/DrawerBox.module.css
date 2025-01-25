@@ -36,8 +36,9 @@
 
 .virt {
   position: fixed;
-  top: 200px;
-  left: 20px;
+  top: 80px;
+  left: 10px;
   background: #fff;
   z-index: 1000;
+  border-radius: 10px;
 }

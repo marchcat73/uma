@@ -1,7 +1,9 @@
 'use client';
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
+import { useReactiveVar } from '@apollo/client';
 import { Alert, Button, TextField } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
+import { itemsVar } from '@/cache';
 import { VirtualKeyboard } from '@/components';
 import styles from './DrawerBox.module.css';
 
@@ -13,6 +15,8 @@ const DrawerBox = ({ onClose }: any) => {
   const [isBottom, setIsBottom] = useState<boolean | null>(false);
   const [openKeypad, setOpenKeypad] = useState(false);
   const [size, setSize] = useState('width');
+
+  const panels = useReactiveVar(itemsVar);
 
   const startVirtualKeyboard = (arg: any) => {
     setSize(arg);
@@ -31,6 +35,20 @@ const DrawerBox = ({ onClose }: any) => {
       'ручка снизу: ',
       isBottom,
     );
+    const panel = {
+      id: panels.length + 1,
+      width,
+      height,
+      isPerf,
+      isCase,
+      isBottom,
+      openMenu: false,
+    };
+
+    const updatePenels = [...panels, panel];
+    itemsVar(updatePenels);
+
+    onClose(false);
   };
   return (
     <div className={styles.drawerBox}>
@@ -45,11 +63,7 @@ const DrawerBox = ({ onClose }: any) => {
             aria-label="width"
             value={width}
             className={styles.inputText}
-            // onChange={(v) => {
-            //   setWidth(Number(v.target.value));
-            // }}
             size="small"
-            // type="number"
             onFocus={() => startVirtualKeyboard('width')}
           />
           <TextField
@@ -58,11 +72,7 @@ const DrawerBox = ({ onClose }: any) => {
             aria-label="height"
             value={height}
             className={styles.inputText}
-            // onChange={(v) => {
-            //   setHeight(Number(v.target.value));
-            // }}
             size="small"
-            // type="number"
             onFocus={() => startVirtualKeyboard('height')}
           />
         </div>
@@ -141,9 +151,17 @@ const DrawerBox = ({ onClose }: any) => {
       {openKeypad && (
         <div className={styles.virt}>
           {size === 'width' ? (
-            <VirtualKeyboard inputValue={width} setInputValue={setWidth} />
+            <VirtualKeyboard
+              inputValue={width}
+              setInputValue={setWidth}
+              onClose={setOpenKeypad}
+            />
           ) : (
-            <VirtualKeyboard inputValue={height} setInputValue={setHeight} />
+            <VirtualKeyboard
+              inputValue={height}
+              setInputValue={setHeight}
+              onClose={setOpenKeypad}
+            />
           )}
         </div>
       )}
