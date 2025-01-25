@@ -19,7 +19,7 @@ const AccordionPanels = ({ items }: any) => {
     itemsVar([...cleared]);
 
     const updatePanels = panels.map((el: any) => {
-      if (el.id === id) {
+      if (el?.id === id) {
         el.openMenu = true;
       }
 
@@ -31,21 +31,21 @@ const AccordionPanels = ({ items }: any) => {
   return (
     <>
       {items.map((item: any) => (
-        <div className={styles.panel} key={item.id}>
+        <div className={styles.panel} key={item?.id}>
           <Typography variant="subtitle1">
-            {`${item.width}x${item.height} - ${items.length} шт.`}
+            {`${item?.width}x${item?.height} - ${items?.length} шт.`}
           </Typography>
           <IconButton
             aria-label="more"
             aria-haspopup="true"
             onClick={() => {
-              handleClick(item.id);
+              handleClick(item?.id);
             }}
           >
             <MoreVertIcon />
           </IconButton>
 
-          {item.openMenu && <IconMenu id={item.id} />}
+          {item?.openMenu && <IconMenu id={item?.id} />}
         </div>
       ))}
     </>
